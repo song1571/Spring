@@ -44,7 +44,7 @@ public class UserDaoTest {
 		this.user2 = new User("leegw700", "ÀÌ±æ¿ø", "springno2");
 		this.user3 = new User("bumjin", "¹Ú¹üÁø", "springno3");
 		
-		System.setProperty("configFile", "test-config.properties");
+		System.setProperty("configFile", "test-config.properties"); // :configFile 환경변수 설정
 
 	}
 	
@@ -83,7 +83,7 @@ public class UserDaoTest {
 		assertEquals(userget2.getPassword(), user2.getPassword());
 	}
 	
-	@Test
+	@Test   // @Test(expected=EmptyResultDataAccessException.class) => JUnit5에서는 지원 안함 
 //	@Order(2)
 	public void getUserFailure() throws SQLException, ClassNotFoundException {		
 		dao.deleteAll();
@@ -91,8 +91,8 @@ public class UserDaoTest {
 		
 //		public interface Executable {
 //
-//			void execute() throws Throwable;
-//
+//			void execute() throws Throwable; // execute() 추상 메스워드 바디 구현
+//											 // dao.get("unknown_id")로 구현
 //		}
 		// Assert that 
 		// execution of the supplied executable throws an exception of the expectedType 
@@ -153,7 +153,7 @@ public class UserDaoTest {
 	
 	@AfterEach
 	public void afterEach() {
-		System.clearProperty("configFile");
+		System.clearProperty("configFile"); // BeforeEach 설정한 configFile 클리어 시킴
 	}
 	
 	@AfterAll
